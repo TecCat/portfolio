@@ -30,20 +30,12 @@ aside .ct a{color:var(--acc);font-weight:500}
 .sub{color:var(--mut);max-width:640px;margin-bottom:3rem}
 .lab{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600;margin:3.4rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
 
-/* phone mock */
-.phone{width:130px;aspect-ratio:9/18.5;border-radius:22px;border:5px solid #111;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18);flex-shrink:0}
-.phone:before{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:44%;height:10px;background:#111;border-radius:10px;z-index:2}
-.phone .in{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.phone.ik .in{background:radial-gradient(circle at 50% 38%,#6fdad6 0,#29B9B5 38%,#0f5f5d 100%)}
-.ring{width:56px;height:56px;border-radius:50%;border:3px solid rgba(255,255,255,.9);box-shadow:0 0 0 8px rgba(255,255,255,.18),0 0 0 18px rgba(255,255,255,.08)}
-.phone.pw .in{background:linear-gradient(160deg,#fff7ec,#ffe0b8)}
-.scan{width:80px;height:62px;border:2px dashed #c9731a;border-radius:8px;position:relative;background:rgba(255,255,255,.7);display:flex;flex-direction:column;justify-content:center;gap:5px;padding:8px}
-.scan i{display:block;height:4px;border-radius:3px;background:#e2b17a}
-.scan i:nth-child(2){width:70%}.scan i:nth-child(3){width:85%}
-.scan:after{content:"";position:absolute;left:0;right:0;top:48%;height:2px;background:#e8590c;box-shadow:0 0 8px #e8590c}
+/* phone frame (real app screenshots) */
+.phone{width:150px;aspect-ratio:1260/2736;border-radius:26px;border:5px solid #111;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18);flex-shrink:0;background:#111}
+.phone img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* case studies */
-.proj{display:grid;grid-template-columns:150px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line)}
+.proj{display:grid;grid-template-columns:170px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line)}
 .proj h3{font-size:1.7rem;margin-bottom:.15rem}
 .proj .meta{font-size:.82rem;color:#7a766b;margin-bottom:.8rem}
 .proj .tldr{font-size:1.04rem;margin-bottom:1.2rem}
@@ -87,7 +79,7 @@ aside .ct a{color:var(--acc);font-weight:500}
 #cal iframe{width:100%;height:720px;border:0;display:block}
 
 footer{color:#8a8578;font-size:.82rem;margin-top:3rem}
-@media(max-width:860px){.wrap{grid-template-columns:1fr;gap:2rem;padding-top:2.5rem}aside{position:static}aside nav{display:none}.proj{grid-template-columns:1fr}.proj .phone{width:110px}.grid2{grid-template-columns:1fr}.big{grid-template-columns:1fr 1fr}.consult{grid-template-columns:1fr}.vid{max-width:240px;margin:auto}.proj dl{grid-template-columns:1fr;gap:.2rem}.proj dd{margin-bottom:.7rem}}
+@media(max-width:860px){.wrap{grid-template-columns:1fr;gap:2rem;padding-top:2.5rem}aside{position:static}aside nav{display:none}.proj{grid-template-columns:1fr}.proj .phone{width:130px}.grid2{grid-template-columns:1fr}.big{grid-template-columns:1fr 1fr}.consult{grid-template-columns:1fr}.vid{max-width:240px;margin:auto}.proj dl{grid-template-columns:1fr;gap:.2rem}.proj dd{margin-bottom:.7rem}}
 </style>
 </head>
 <body>
@@ -118,7 +110,7 @@ footer{color:#8a8578;font-size:.82rem;margin-top:3rem}
 
     <!-- iKima -->
     <article class="proj">
-      <div class="phone ik"><div class="in"><div class="ring"></div></div></div>
+      <div class="phone"><img src="ikima-screen.jpg" alt="iKima guided breathing screen"></div>
       <div>
         <h3>iKima — Breathe &amp; Calm Stress</h3>
         <div class="meta">iOS · 2026 · Product Lead (solo)</div>
@@ -137,7 +129,7 @@ footer{color:#8a8578;font-size:.82rem;margin-top:3rem}
 
     <!-- Pawlaris -->
     <article class="proj">
-      <div class="phone pw"><div class="in"><div class="scan"><i></i><i></i><i></i></div></div></div>
+      <div class="phone"><img src="pawlaris-screen.jpg" alt="Pawlaris app launch screen"></div>
       <div>
         <h3>Pawlaris — AI Pet-Food Scanner</h3>
         <div class="meta">iOS · 2026 · Product Lead</div>
