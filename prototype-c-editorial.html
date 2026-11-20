@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silja Wu | Product Lead — iKima &amp; Pawlaris (prototype C v2)</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,sans-serif;line-height:1.6;background:#faf8f4;color:#1c1b19;-webkit-font-smoothing:antialiased;--acc:#1f4d3a;--line:#e4dfd5;--mut:#5d5a52}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;color:#161513;letter-spacing:-.01em}
+.todo{outline:1.5px dashed #e08a00;outline-offset:2px;background:rgba(255,170,0,.12);border-radius:4px;padding:0 .3em}
+
+.wrap{max-width:1120px;margin:auto;display:grid;grid-template-columns:260px 1fr;gap:4rem;padding:4rem 5% 7rem}
+aside{position:sticky;top:3rem;align-self:start}
+aside img{width:132px;height:132px;border-radius:50%;object-fit:cover;margin-bottom:1.2rem}
+aside h1{font-size:2rem;line-height:1.1}
+aside .role{color:var(--mut);margin:.4rem 0 1.4rem;font-size:.97rem}
+aside nav{display:grid;gap:.4rem;margin-bottom:1.6rem;font-size:.92rem}
+aside nav a{padding:.25rem 0;color:var(--mut)}
+aside nav a:hover{color:var(--acc)}
+aside .ct{display:grid;gap:.4rem;font-size:.88rem;color:var(--mut)}
+aside .ct a{color:var(--acc);font-weight:500}
+
+.pitch{font-family:Fraunces,serif;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.28;margin-bottom:1rem}
+.pitch u{text-decoration-color:#c9a86a;text-decoration-thickness:3px;text-underline-offset:5px}
+.sub{color:var(--mut);max-width:640px;margin-bottom:3rem}
+.lab{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600;margin:3.4rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+
+/* phone mock */
+.phone{width:130px;aspect-ratio:9/18.5;border-radius:22px;border:5px solid #111;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18);flex-shrink:0}
+.phone:before{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:44%;height:10px;background:#111;border-radius:10px;z-index:2}
+.phone .in{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.phone.ik .in{background:radial-gradient(circle at 50% 38%,#6fdad6 0,#29B9B5 38%,#0f5f5d 100%)}
+.ring{width:56px;height:56px;border-radius:50%;border:3px solid rgba(255,255,255,.9);box-shadow:0 0 0 8px rgba(255,255,255,.18),0 0 0 18px rgba(255,255,255,.08)}
+.phone.pw .in{background:linear-gradient(160deg,#fff7ec,#ffe0b8)}
+.scan{width:80px;height:62px;border:2px dashed #c9731a;border-radius:8px;position:relative;background:rgba(255,255,255,.7);display:flex;flex-direction:column;justify-content:center;gap:5px;padding:8px}
+.scan i{display:block;height:4px;border-radius:3px;background:#e2b17a}
+.scan i:nth-child(2){width:70%}.scan i:nth-child(3){width:85%}
+.scan:after{content:"";position:absolute;left:0;right:0;top:48%;height:2px;background:#e8590c;box-shadow:0 0 8px #e8590c}
+
+/* case studies */
+.proj{display:grid;grid-template-columns:150px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line)}
+.proj h3{font-size:1.7rem;margin-bottom:.15rem}
+.proj .meta{font-size:.82rem;color:#7a766b;margin-bottom:.8rem}
+.proj .tldr{font-size:1.04rem;margin-bottom:1.2rem}
+.scene{font-family:Fraunces,serif;font-style:italic;font-size:1.05rem;color:#3d3b36;border-left:3px solid #c9a86a;padding-left:1rem;margin-bottom:1.2rem}
+.proj dl{display:grid;grid-template-columns:96px 1fr;gap:.9rem 1.2rem;font-size:.95rem;color:#3d3b36}
+.proj dt{font-weight:600;color:#161513;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding-top:.15rem}
+.proj dd.hmw{font-family:Fraunces,serif;font-size:1.05rem;color:#161513}
+.owned{margin-top:1.3rem;font-size:.9rem;color:var(--mut);padding-top:1rem;border-top:1px dashed var(--line)}
+.owned b{color:#161513}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2.4rem}
+.grid2 p{font-size:.93rem;color:#3d3b36}
+.grid2 b{display:block;font-family:Fraunces,serif;font-size:1.05rem;color:#161513;margin-bottom:.15rem}
+.big{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0}
+.big div{border-top:2px solid var(--acc);padding-top:.7rem}
+.big b{font-family:Fraunces,serif;font-size:2rem;display:block;line-height:1}
+.big small{color:#7a766b;font-size:.8rem;display:block;margin-top:.3rem;line-height:1.35}
+
+/* testimonials */
+.quotes{display:grid;gap:1.6rem}
+.quote{font-family:Fraunces,serif;font-size:1.04rem;line-height:1.55;border-left:3px solid #c9a86a;padding-left:1.2rem;color:#2b2a27}
+.quote small{display:block;font-family:Inter;font-size:.8rem;color:#7a766b;margin-top:.6rem}
+.quote.short{font-size:1.04rem}
+
+/* consulting */
+.consult{background:#fff;border:1px solid var(--line);border-radius:16px;padding:2rem;display:grid;grid-template-columns:230px 1fr;gap:2.2rem;align-items:start;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+.vid{position:relative;border-radius:22px;overflow:hidden;background:#111;aspect-ratio:9/16;box-shadow:0 14px 32px rgba(0,0,0,.2)}
+.vid video{width:100%;height:100%;object-fit:cover;display:block}
+.consult h2{font-size:1.7rem;margin-bottom:.5rem}
+.consult .lead{color:#3d3b36;margin-bottom:1.2rem}
+.consult ul{list-style:none;display:grid;gap:.55rem;margin-bottom:1.5rem}
+.consult li{padding-left:1.3rem;position:relative;font-size:.95rem;color:#3d3b36}
+.consult li:before{content:"→";position:absolute;left:0;color:var(--acc)}
+.consult li b{color:#161513}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;padding:.8rem 1.5rem;border-radius:6px;font-weight:600;font-size:.93rem;cursor:pointer;border:0;font-family:inherit}
+.btn.pri{background:var(--acc);color:#fff}.btn.pri:hover{background:#163a2b}
+.btn.ghost{border:1px solid var(--acc);color:var(--acc);background:transparent}
+.note{font-size:.82rem;color:#7a766b;margin-top:.9rem}
+#cal{display:none;margin-top:1.6rem;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+#cal iframe{width:100%;height:720px;border:0;display:block}
+
+footer{color:#8a8578;font-size:.82rem;margin-top:3rem}
+@media(max-width:860px){.wrap{grid-template-columns:1fr;gap:2rem;padding-top:2.5rem}aside{position:static}aside nav{display:none}.proj{grid-template-columns:1fr}.proj .phone{width:110px}.grid2{grid-template-columns:1fr}.big{grid-template-columns:1fr 1fr}.consult{grid-template-columns:1fr}.vid{max-width:240px;margin:auto}.proj dl{grid-template-columns:1fr;gap:.2rem}.proj dd{margin-bottom:.7rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside>
+    <img src="profile-sm.jpg" alt="Silja Wu">
+    <h1>Silja Wu</h1>
+    <p class="role">Product Lead, Sentira Labs<br>Taiwan · open to APAC / global</p>
+    <nav>
+      <a href="#work">Selected work</a>
+      <a href="#how">How I work</a>
+      <a href="#background">Background</a>
+      <a href="#words">Colleagues say</a>
+      <a href="#consulting">Consulting</a>
+    </nav>
+    <div class="ct">
+      <a href="mailto:siljawu@gmail.com">siljawu@gmail.com</a>
+      <a href="https://linkedin.com/in/siljawu" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://calendly.com/siljawu/" target="_blank" rel="noopener">Book an intro call ↗</a>
+      <span style="margin-top:.4rem"><a href="index.html" style="color:#161513;font-weight:700">EN</a> · <a href="zh.html">繁中</a></span>
+    </div>
+  </aside>
+
+  <main>
+    <p class="pitch">I take consumer products from <u>blank page to App Store</u>, and I've run product operations for <u>190+ markets</u>. Two apps live; one person accountable.</p>
+    <p class="sub">The short version for a hiring manager: product strategy, AI-assisted delivery with real guardrails, and the operating discipline from years of global product operations at eBay.</p>
+
+    <div class="lab" id="work">Selected work</div>
+
+    <!-- iKima -->
+    <article class="proj">
+      <div class="phone ik"><div class="in"><div class="ring"></div></div></div>
+      <div>
+        <h3>iKima — Breathe &amp; Calm Stress</h3>
+        <div class="meta">iOS · 2026 · Product Lead (solo)</div>
+        <p class="tldr">Guided breathing with no streaks, guilt, or FOMO. Privacy-first: no accounts, no cloud sync.</p>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Adults under sustained stress often feel it in their body first — a racing heart, shallow breath, poor sleep — but most breathing tools fail them exactly when it matters: they require menus and memorised steps mid-panic, give no proof that anything changed, and often demand an account or a wearable.</dd>
+          <dt>HMW</dt>
+          <dd class="hmw">How might we help someone with only an iPhone calm down in about a minute — and see their own before/after signal?</dd>
+          <dt>Challenge</dt>
+          <dd>Deliver real, visible measurement without a watch, a cloud, or medical claims — and monetise without exploiting stressed users.</dd>
+        </dl>
+        <p class="owned"><b>I owned:</b> positioning, PRD, UX, HealthKit integration, QA, launch, and onboarding and subscription refinement.</p>
+      </div>
+    </article>
+
+    <!-- Pawlaris -->
+    <article class="proj">
+      <div class="phone pw"><div class="in"><div class="scan"><i></i><i></i><i></i></div></div></div>
+      <div>
+        <h3>Pawlaris — AI Pet-Food Scanner</h3>
+        <div class="meta">iOS · 2026 · Product Lead</div>
+        <p class="scene">A pet owner stands in a store aisle holding a bag of food, asking one question: “Is this right for my pet?”</p>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Ingredient labels are dense, full of jargon, and impossible to decode in the few minutes a shopping decision takes. Allergens are even harder. One ingredient can appear as “chicken,” “poultry meal,” or under a different language, so owners easily miss it. For a pet with known allergies, one miss is a real health risk.</dd>
+          <dt>HMW</dt>
+          <dd class="hmw">How might we help owners make a confident, personalized, explainable food decision at the shelf, without asking them to become nutrition experts?</dd>
+          <dt>Challenge</dt>
+          <dd>Existing reviews and ratings are generic. They ignore the pet’s species, life stage, and allergies, and their scores are black boxes, so owners can’t tell why a food is good or bad.</dd>
+        </dl>
+        <p class="owned"><b>I owned:</b> requirements and the OCR → API → AI workflow; directed AI coding agents under guardrails; shipped to the App Store.</p>
+      </div>
+    </article>
+
+    <div class="lab" id="how">How I work</div>
+    <div class="grid2">
+      <p><b>Humans own decisions</b>Positioning, scope, and trade-offs are mine; Claude Code and Codex execute.</p>
+      <p><b>Guardrails, not vibes</b>Protected-file rules, impact estimates, and human approval gates.</p>
+      <p><b>Issues as contracts</b>Every task is a GitHub issue an agent can be held to.</p>
+      <p><b>Release discipline</b>PR review, automated tests, on-device acceptance testing before every release.</p>
+    </div>
+
+    <div class="lab" id="background">Background · eBay</div>
+    <div class="big">
+      <div><b>11.2%</b><small>GMV lift, global homepage transformation</small></div>
+      <div><b>190+</b><small>markets</small></div>
+      <div><b>30%</b><small>faster experiment velocity</small></div>
+      <div><b>80%</b><small>faster emergency campaign vs. standard SLA</small></div>
+    </div>
+    <p style="font-size:.95rem;color:#3d3b36">Product Operations Lead, Buyer Experience (2022–2026), and Marketing &amp; Growth Operations (2019–2021) at eBay Inc.</p>
+
+    <div class="lab" id="words">Colleagues say</div>
+    <div class="quotes">
+      <blockquote class="quote">“Over the last 2 years, I've had the privilege of partnering with Silja Wu on building and testing several Buyer Experience improvements at eBay. Silja is a high-performing, collaborative leader who pairs strong product judgment with steady execution and consistently brings partners together. She's delivered impact at scale: a key contributor to migrations and strategic releases on eBay's Homepage across 190+ countries, ensuring stability and customer impact globally and a close partner to business teams to launch, triage, and resolve issues across top-of-funnel shopping surfaces — balancing speed, quality, and operational excellence while keeping teams focused on buyer outcomes. In short, Silja demonstrates integrity, initiative, and impact at a consistently high level — she's the kind of leader you want on your most important work and the kind of teammate who makes the people around her better. I recommend her without reservation.”<small>Director of Product, Global Marketplace</small></blockquote>
+
+      <blockquote class="quote">“Silja is an excellent marketing partner to work with — very responsive and specialist in marketing and product operations. I enjoyed our collaboration on site banner placements, which required a detailed knowledge of front and back end set ups, as well as understanding complex user segmentation for Latin American markets.”<small>Marketing Director, PLG SaaS</small></blockquote>
+
+      <blockquote class="quote">“I have been working with Silja on the user experience on eBay site and app, where Silja is managing the targeting and set up of marketing content on all the biggest eBay sites, which is a multi-million dollar business. Silja is incredibly responsible, tirelessly curious and looking for constant ways how she can grow and improve, possessing a true growth mindset! She ventures out and goes where her passion takes her, consulting on product Growth and app store optimization as a total side hustle! There's pretty much nothing Silja could not do, and anyone would be lucky to have her on their team.”<small>Technical Product Lead, Global Marketplace</small></blockquote>
+
+      <blockquote class="quote">“Silja was awesome! We got amazing insight on the call for how to gain deeper insight from our customers, how to market ourselves better, and how to create a proper customer journey/roadmap for our service offering. She even gave us tools to use after the call, one of them was a template that helped us refine our go-to-market strategy.”<small>Strategy Mentee, GrowthMentor</small></blockquote>
+    </div>
+
+    <div class="lab" id="consulting">Consulting</div>
+    <section class="consult">
+      <div class="vid">
+        <video controls playsinline preload="none" poster="meet-silja-poster.jpg">
+          <source src="meet-silja.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div>
+        <h2>Need a product-and-growth partner?</h2>
+        <p class="lead">Beyond my full-time search, I take on a small number of advisory engagements. Watch the 1-minute intro, then book a call to see if there's a fit.</p>
+        <ul>
+          <li><b>Go-to-market and launch plans</b> — for a new product, a new market, or a pivot from hardware to software.</li>
+          <li><b>Experimentation and platform governance</b> — fewer test collisions, faster decisions, regional rollout without chaos.</li>
+          <li><b>0→1 consumer apps with AI-assisted build</b> — scoping, guardrails, and release discipline for small teams.</li>
+        </ul>
+        <div class="cta">
+          <button class="btn pri" id="calBtn" type="button">Pick a time →</button>
+          <a class="btn ghost" href="https://calendly.com/siljawu/" target="_blank" rel="noopener">Open in Calendly ↗</a>
+          <a class="btn ghost" href="mailto:siljawu@gmail.com?subject=Consulting%20inquiry">Email</a>
+        </div>
+        <p class="note">Free 30-minute intro call · no commitment.</p>
+      </div>
+    </section>
+    <div id="cal"></div>
+
+    <footer>© 2026 Silja Wu</footer>
+  </main>
+</div>
+
+<script>
+document.getElementById('calBtn').addEventListener('click',function(){
+  var box=document.getElementById('cal');
+  if(!box.firstChild){
+    var f=document.createElement('iframe');
+    f.src='https://calendly.com/siljawu/?hide_gdpr_banner=1&embed_domain='+encodeURIComponent(location.hostname||'localhost')+'&embed_type=Inline';
+    f.title='Book a call with Silja Wu';f.loading='lazy';box.appendChild(f);
+  }
+  var open=box.style.display==='block';
+  box.style.display=open?'none':'block';
+  this.textContent=open?'Pick a time →':'Hide calendar ↑';
+  if(!open)box.scrollIntoView({behavior:'smooth',block:'start'});
+});
+</script>
+</body>
+</html>
